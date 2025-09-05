@@ -27,13 +27,13 @@ const TailoringHero = () => {
         </div>
 
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-          <span className="block">TrailerIT</span>
-          <span className="block text-gold text-3xl md:text-4xl font-normal">Custom Tailoring, Made for You</span>
+          <span className="block">StitchIT</span>
+          <span className="block text-gold text-3xl md:text-4xl font-normal">Learn • Earn • Empower</span>
         </h1>
 
         <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto leading-relaxed">
-          Transform your fabric into perfectly fitted ethnic wear. From elegant sarees to stunning lehengas, 
-          we craft each piece with precision and love.
+          India's largest women empowerment platform through tailoring. Custom orders, expert training, 
+          and career opportunities - all in one place.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

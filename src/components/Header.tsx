@@ -1,9 +1,20 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Scissors, Menu, X, MessageCircle, Phone } from "lucide-react";
+import { Scissors, Menu, X, MessageCircle, Phone, GraduationCap, Briefcase, Users } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navigation = [
+    { name: 'Home', id: 'home' },
+    { name: 'Services', id: 'services' },
+    { name: 'Measurements', id: 'measurements' },
+    { name: 'Courses', id: 'courses', icon: GraduationCap },
+    { name: 'Jobs', id: 'jobs', icon: Briefcase },
+    { name: 'Portfolio', id: 'portfolio' },
+    { name: 'Community', id: 'community', icon: Users },
+    { name: 'Contact', id: 'contact' },
+  ];
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -19,7 +30,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-border/50">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-2">
@@ -27,37 +38,23 @@ const Header = () => {
               <Scissors className="w-6 h-6 text-primary" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-primary">TrailerIT</h1>
-              <p className="text-xs text-muted-foreground">Expert Tailoring</p>
+              <h1 className="text-xl font-bold text-primary">StitchIT</h1>
+              <p className="text-xs text-muted-foreground">Learn • Earn • Empower</p>
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <button 
-              onClick={() => scrollToSection('home')}
-              className="text-foreground hover:text-gold transition-colors"
-            >
-              Home
-            </button>
-            <button 
-              onClick={() => scrollToSection('services')}
-              className="text-foreground hover:text-gold transition-colors"
-            >
-              Services
-            </button>
-            <button 
-              onClick={() => scrollToSection('portfolio')}
-              className="text-foreground hover:text-gold transition-colors"
-            >
-              Portfolio
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="text-foreground hover:text-gold transition-colors"
-            >
-              Contact
-            </button>
+          <nav className="hidden lg:flex items-center gap-6">
+            {navigation.map((item) => (
+              <button
+                key={item.name}
+                onClick={() => scrollToSection(item.id)}
+                className="flex items-center gap-1 text-sm text-foreground hover:text-gold transition-colors"
+              >
+                {item.icon && <item.icon className="w-4 h-4" />}
+                {item.name}
+              </button>
+            ))}
           </nav>
 
           {/* Desktop CTA Buttons */}
@@ -75,7 +72,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-muted transition-colors"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -83,32 +80,18 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border/50">
+          <div className="lg:hidden py-4 border-t border-border/50 max-h-screen overflow-y-auto">
             <nav className="flex flex-col gap-4">
-              <button 
-                onClick={() => scrollToSection('home')}
-                className="text-left py-2 text-foreground hover:text-gold transition-colors"
-              >
-                Home
-              </button>
-              <button 
-                onClick={() => scrollToSection('services')}
-                className="text-left py-2 text-foreground hover:text-gold transition-colors"
-              >
-                Services
-              </button>
-              <button 
-                onClick={() => scrollToSection('portfolio')}
-                className="text-left py-2 text-foreground hover:text-gold transition-colors"
-              >
-                Portfolio
-              </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="text-left py-2 text-foreground hover:text-gold transition-colors"
-              >
-                Contact
-              </button>
+              {navigation.map((item) => (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.id)}
+                  className="flex items-center gap-2 text-left py-2 text-foreground hover:text-gold transition-colors"
+                >
+                  {item.icon && <item.icon className="w-4 h-4" />}
+                  {item.name}
+                </button>
+              ))}
               
               <div className="flex gap-3 pt-4 border-t border-border/50">
                 <Button variant="outline" size="sm" className="flex-1">
